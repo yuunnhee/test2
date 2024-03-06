@@ -1,0 +1,149 @@
+ - SWIPER BASIC -
+<div class="???_slide">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                    </div>
+                    <div class="swiper-slide">
+                    </div>
+                    <div class="swiper-slide">
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+new Swiper('.menu_slide1 .swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 15,
+            speed: 500,
+                autoplay: {
+                delay: 2500,
+            },
+	 effect : 'fade',
+                allowTouchMove: 'true',
+                fadeEffect: {
+                    crossFade: true,
+                },
+            navigation: {
+                nextEl: '.menu_btns1.menu_next',
+                prevEl: '.menu_btns1.menu_prev',
+            },
+        });
+
+ - BUTTON -
+
+<button type="button" class="kword_btns kword_prev">이전</button>
+<button type="button" class="kword_btns kword_next">다음</button>
+
+.yt_btns{position: absolute;top:22vw;width:7.0315vw;height:7.0315vw;background-repeat:no-repeat;background-position:center;font-size:0;}
+.yt_btns.yt_prev{left: 0vw;background-image:url('../img/ytarrowleft.png')}
+.yt_btns.yt_next{right: 0vw;background-image:url('../img/ytarrowright.png')}
+
+
+
+
+
+ - BULLET -
+
+<ul class="???_paging fs_def t_center">
+				<li class="swiper-pagination-bullet swiper-pagination-bullet-active"><a href="#none"></a></li>
+				<li class="swiper-pagination-bullet"><a href="#none"></a></li>
+			</ul>
+
+
+.story_paging{padding: 6.6666vw 0 13.3333vw 0}
+.story_paging li{width:2.4vw;height:2.4vw;margin-left:4.0625vw}
+.story_paging li:first-child{margin-left:0}
+.story_paging li a{display:block;width:100%;height:100%;border-radius:50%;background-color: transparent;border: 0.4vw solid #de0110;box-sizing: border-box;}
+.story_paging li.swiper-pagination-bullet-active a{background-color:#de0110}
+
+
+pagination: {
+            el: '.main_paging',
+            type: 'bullets',
+            clickable: true,
+            renderBullet: function(index, className){
+            		return '<li class="' + className + '"><a href="#none"></a></li>';
+            }
+},
+
+
+
+------------------------불릿에 여러 요소 첨가한 디자인코딩 했을 경우
+
+var fullPging = $('.full_paging li');
+        new Swiper('.full_slide .swiper-container', {
+            slidesPerView: 'auto',
+            speed: 500,
+            autoplay: {
+                delay: 2500,
+            },
+            pagination: {
+				el: '.full_paging',
+				type: 'bullets',
+				clickable: true,
+				renderBullet: function(index, className){
+					return '<li class="box box0' + (index + 1) + ' ' + className + '">'+ fullPging.eq(index).html() +'</li>';
+				}
+            },
+        });
+
+
+--------------------------불릿으로만 제어
+var swiper = new Swiper('.menu_popup_slide .swiper-container', {
+                pagination: {
+                    el: '.menu_popup_paging',
+                    type: 'bullets',
+                    clickable: true,
+                    renderBullet: function(index, className) {
+                        return '<li class="' + className + '"><a href="#none"></a></li>';
+                    }
+                },
+                allowTouchMove: false,
+                observer: true,
+                observeParents: true,
+            });
+
+
+
+
+
+ - PROGRESS BAR -
+
+<div class="swiper-pagination swiper-pagination-progressbar">
+	<span class="swiper-pagination-progressbar-fill"></span>
+</div>
+
+.intro_slide .swiper-pagination{position:relative;height:1px;background:rgba(255,255,255,0.3)}
+.intro_slide .swiper-pagination-progressbar-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:#fff;
+-webkit-transform:scale(0);
+-ms-transform:scale(0);
+transform:scale(0);
+-webkit-transform-origin:left top;
+-ms-transform-origin:left top;
+transform-origin:left top
+}
+
+pagination: {
+	el: '.???_slide .swiper-pagination',
+	type: 'progressbar'
+}
+
+
+
+
+ - FRACTION -
+
+<div class="swiper-pagination swiper-pagination-fraction">
+	<span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">3</span>
+</div>
+
+.brand_story .swiper-pagination{font-size:14px;color:#e75f23;line-height:20px;text-align:center}
+.brand_story .swiper-pagination span.swiper-pagination-total,
+.brand_story .swiper-pagination span.swiper-pagination-bridge{color:#999898}
+
+pagination: {
+	el: '.???_slide .swiper-pagination',
+	type: 'fraction'
+}
